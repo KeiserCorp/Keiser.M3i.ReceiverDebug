@@ -15,7 +15,7 @@ using System.Net.Sockets;
 using System.IO;
 using System.Diagnostics;
 
-namespace M3RelayDebug
+namespace Keiser.M3i.ReceiverDebug
 {
     class Logger
     {
@@ -27,6 +27,9 @@ namespace M3RelayDebug
         private ListBox _outputBox;
         private Dispatcher dispatcher = Dispatcher.CurrentDispatcher;
         public List<Rider> riders;
+        public int apiVersion;
+
+        public string ipEndPointString = "";
 
 
         public Logger(ListBox realBox)
@@ -47,9 +50,11 @@ namespace M3RelayDebug
 
         }
 
-        public void start(List<Rider> _riders)
+        public void start(List<Rider> _riders, int _apiVersion, string _ipEndPointString)
         {
             riders = _riders;
+            apiVersion = _apiVersion;
+            ipEndPointString = _ipEndPointString;
             _Thread = new Thread(worker);
             _KeepWorking = running = true;
             _Thread.Start();
@@ -112,10 +117,24 @@ namespace M3RelayDebug
         public void updateRiders()
         {
             clearBox();
-            toBox("RPM  HR  PWR KCAL CLOCK SSI UUID              TSU", true);
-            foreach (Rider rider in riders)
+            switch (apiVersion)
             {
-                toBox(rider.getString());
+                case 8:
+                    toBox(ipEndPointString, true);
+                    toBox("RPM  HR  PWR KCAL CLOCK SSI UUID              TSU", true);
+                    foreach (Rider rider in riders)
+                    {
+                        toBox(rider.getString_v08());
+                    }
+                    break;
+                case 10:
+                    toBox(ipEndPointString, true);
+                    toBox("ID  RPM  HR  PWR INT CLOCK SSI UUID              TSU", true);
+                    foreach (Rider rider in riders)
+                    {
+                        toBox(rider.getString_v10());
+                    }
+                    break;
             }
 
         }

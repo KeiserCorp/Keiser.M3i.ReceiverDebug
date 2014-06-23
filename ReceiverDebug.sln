@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "M3RelayDebug", "M3RelayDebug\M3RelayDebug.csproj", "{3010F8E5-1CE8-4FB2-82C4-80BD825B67C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReceiverDebug", "ReceiverDebug\ReceiverDebug.csproj", "{3010F8E5-1CE8-4FB2-82C4-80BD825B67C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

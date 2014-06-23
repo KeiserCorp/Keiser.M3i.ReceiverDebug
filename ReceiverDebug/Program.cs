@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace M3RelayDebug
+namespace Keiser.M3i.ReceiverDebug
 {
     static class Program
     {

@@ -1,4 +1,4 @@
-﻿namespace M3RelayDebug
+﻿namespace Keiser.M3i.ReceiverDebug
 {
     partial class MainForm
     {
@@ -36,6 +36,8 @@
             this.statusBarClearButton = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusBarSaveButton = new System.Windows.Forms.ToolStripStatusLabel();
             this.mainControlPanel = new System.Windows.Forms.Panel();
+            this.versionLabel = new System.Windows.Forms.Label();
+            this.versionBox = new System.Windows.Forms.ComboBox();
             this.threadToggleButton = new System.Windows.Forms.Button();
             this.portBox = new System.Windows.Forms.TextBox();
             this.portBoxLabel = new System.Windows.Forms.Label();
@@ -55,7 +57,7 @@
             this.statusBarSaveButton});
             this.bottomStatusStrip.Location = new System.Drawing.Point(0, 274);
             this.bottomStatusStrip.Name = "bottomStatusStrip";
-            this.bottomStatusStrip.Size = new System.Drawing.Size(404, 22);
+            this.bottomStatusStrip.Size = new System.Drawing.Size(534, 22);
             this.bottomStatusStrip.SizingGrip = false;
             this.bottomStatusStrip.TabIndex = 0;
             this.bottomStatusStrip.Text = "bottomStatusStrip";
@@ -79,14 +81,14 @@
             this.errorStatus.ForeColor = System.Drawing.Color.Red;
             this.errorStatus.Name = "errorStatus";
             this.errorStatus.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
-            this.errorStatus.Size = new System.Drawing.Size(294, 17);
+            this.errorStatus.Size = new System.Drawing.Size(424, 17);
             this.errorStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // statusBarClearButton
             // 
             this.statusBarClearButton.AutoSize = false;
             this.statusBarClearButton.BackColor = System.Drawing.SystemColors.Control;
-            this.statusBarClearButton.BackgroundImage = global::M3RelayDebug.Properties.Resources.action_Cancel_16xLG;
+            this.statusBarClearButton.BackgroundImage = global::Keiser.M3i.ReceiverDebug.Properties.Resources.action_Cancel_16xLG;
             this.statusBarClearButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.statusBarClearButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.statusBarClearButton.Margin = new System.Windows.Forms.Padding(2, 3, 2, 2);
@@ -99,7 +101,7 @@
             // 
             this.statusBarSaveButton.AutoSize = false;
             this.statusBarSaveButton.BackColor = System.Drawing.SystemColors.Control;
-            this.statusBarSaveButton.BackgroundImage = global::M3RelayDebug.Properties.Resources.save_16xLG;
+            this.statusBarSaveButton.BackgroundImage = global::Keiser.M3i.ReceiverDebug.Properties.Resources.save_16xLG;
             this.statusBarSaveButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.statusBarSaveButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.statusBarSaveButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -111,6 +113,8 @@
             // 
             // mainControlPanel
             // 
+            this.mainControlPanel.Controls.Add(this.versionLabel);
+            this.mainControlPanel.Controls.Add(this.versionBox);
             this.mainControlPanel.Controls.Add(this.threadToggleButton);
             this.mainControlPanel.Controls.Add(this.portBox);
             this.mainControlPanel.Controls.Add(this.portBoxLabel);
@@ -118,12 +122,33 @@
             this.mainControlPanel.Controls.Add(this.ipAddressLabel);
             this.mainControlPanel.Location = new System.Drawing.Point(0, -1);
             this.mainControlPanel.Name = "mainControlPanel";
-            this.mainControlPanel.Size = new System.Drawing.Size(404, 34);
+            this.mainControlPanel.Size = new System.Drawing.Size(534, 34);
             this.mainControlPanel.TabIndex = 1;
+            // 
+            // versionLabel
+            // 
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.Location = new System.Drawing.Point(323, 10);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(62, 13);
+            this.versionLabel.TabIndex = 0;
+            this.versionLabel.Text = "API Version";
+            // 
+            // versionBox
+            // 
+            this.versionBox.FormattingEnabled = true;
+            this.versionBox.Items.AddRange(new object[] {
+            "1.0+",
+            "0.8"});
+            this.versionBox.Location = new System.Drawing.Point(389, 6);
+            this.versionBox.Name = "versionBox";
+            this.versionBox.Size = new System.Drawing.Size(61, 21);
+            this.versionBox.TabIndex = 4;
+            this.versionBox.Text = "1.0+";
             // 
             // threadToggleButton
             // 
-            this.threadToggleButton.Location = new System.Drawing.Point(323, 5);
+            this.threadToggleButton.Location = new System.Drawing.Point(456, 5);
             this.threadToggleButton.Name = "threadToggleButton";
             this.threadToggleButton.Size = new System.Drawing.Size(75, 23);
             this.threadToggleButton.TabIndex = 3;
@@ -182,10 +207,10 @@
             this.outputBox.ItemHeight = 11;
             this.outputBox.Location = new System.Drawing.Point(0, 32);
             this.outputBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.outputBox.MaximumSize = new System.Drawing.Size(404, 1000);
-            this.outputBox.MinimumSize = new System.Drawing.Size(404, 242);
+            this.outputBox.MaximumSize = new System.Drawing.Size(534, 1000);
+            this.outputBox.MinimumSize = new System.Drawing.Size(534, 242);
             this.outputBox.Name = "outputBox";
-            this.outputBox.Size = new System.Drawing.Size(404, 242);
+            this.outputBox.Size = new System.Drawing.Size(534, 242);
             this.outputBox.TabIndex = 0;
             // 
             // MainForm
@@ -193,14 +218,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(404, 296);
+            this.ClientSize = new System.Drawing.Size(534, 296);
             this.Controls.Add(this.outputBox);
             this.Controls.Add(this.mainControlPanel);
             this.Controls.Add(this.bottomStatusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(420, 1000);
-            this.MinimumSize = new System.Drawing.Size(420, 335);
+            this.MaximumSize = new System.Drawing.Size(550, 1000);
+            this.MinimumSize = new System.Drawing.Size(550, 335);
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "M3 Relay Debug";
@@ -228,6 +253,8 @@
         private System.Windows.Forms.ListBox outputBox;
         private System.Windows.Forms.ToolStripStatusLabel statusBarSaveButton;
         private System.Windows.Forms.ToolStripStatusLabel statusBarClearButton;
+        private System.Windows.Forms.Label versionLabel;
+        private System.Windows.Forms.ComboBox versionBox;
     }
 }
 

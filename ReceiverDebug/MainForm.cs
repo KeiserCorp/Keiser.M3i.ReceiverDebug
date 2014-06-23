@@ -15,7 +15,7 @@ using System.Net.Sockets;
 using System.IO;
 using System.Diagnostics;
 
-namespace M3RelayDebug
+namespace Keiser.M3i.ReceiverDebug
 {
     public partial class MainForm : Form
     {
@@ -151,6 +151,7 @@ namespace M3RelayDebug
         {
             receiver.ipAddress = this.ipAddressBox.Text;
             receiver.ipPort = Convert.ToUInt16(this.portBox.Text);
+            receiver.apiVersionStr = this.versionBox.Text;
         }
 
         private void setRunState()

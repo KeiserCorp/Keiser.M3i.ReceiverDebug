@@ -7,8 +7,8 @@
     <ProjectGuid>{3010F8E5-1CE8-4FB2-82C4-80BD825B67C4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>M3RelayDebug</RootNamespace>
-    <AssemblyName>M Series Relay Debug</AssemblyName>
+    <RootNamespace>Keiser.M3i.ReceiverDebug</RootNamespace>
+    <AssemblyName>M3i Receiver Debug</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>true</IsWebBootstrapper>
@@ -57,7 +57,8 @@
     <ApplicationIcon>Resources\M3RelayDebug.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>M3RelayDebug.Program</StartupObject>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>1CF3D99F39AA1C3291C4C19139F1824E41924540</ManifestCertificateThumbprint>
@@ -108,7 +109,6 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="M3RelayDebug_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
