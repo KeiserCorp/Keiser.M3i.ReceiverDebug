@@ -20,7 +20,6 @@ namespace Keiser.M3i.ReceiverDebug
         public UInt16 ipPort;
         public string apiVersionStr = "";
         public int apiVersionInt;
-        public string ipEndPointString = "";
         public List<Rider> riders = new List<Rider>();
 
         public Receiver(Logger _logger)
@@ -32,7 +31,7 @@ namespace Keiser.M3i.ReceiverDebug
         {
             riders.Clear();
             _Thread = new Thread(worker);
-            logger.start(riders, apiVersionInt, ipEndPointString);
+            logger.start(riders, apiVersionInt);
             _KeepWorking = running = true;
             _Thread.Start();
         }
@@ -55,9 +54,7 @@ namespace Keiser.M3i.ReceiverDebug
             {
                 if (socket.Poll(200000, SelectMode.SelectRead))
                 {
-                    //socket.Receive(receivedData);
-                    socket.ReceiveFrom(receivedData, ref remoteEndPoint);
-                    ipEndPointString = remoteEndPoint.ToString();
+                    socket.Receive(receivedData);
                     switch (apiVersionStr)
                     {
                         case "0.8":

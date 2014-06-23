@@ -29,9 +29,6 @@ namespace Keiser.M3i.ReceiverDebug
         public List<Rider> riders;
         public int apiVersion;
 
-        public string ipEndPointString = "";
-
-
         public Logger(ListBox realBox)
         {
             _outputBox = realBox;
@@ -50,11 +47,10 @@ namespace Keiser.M3i.ReceiverDebug
 
         }
 
-        public void start(List<Rider> _riders, int _apiVersion, string _ipEndPointString)
+        public void start(List<Rider> _riders, int _apiVersion)
         {
             riders = _riders;
             apiVersion = _apiVersion;
-            ipEndPointString = _ipEndPointString;
             _Thread = new Thread(worker);
             _KeepWorking = running = true;
             _Thread.Start();
@@ -120,7 +116,6 @@ namespace Keiser.M3i.ReceiverDebug
             switch (apiVersion)
             {
                 case 8:
-                    toBox(ipEndPointString, true);
                     toBox("RPM  HR  PWR KCAL CLOCK SSI UUID              TSU", true);
                     foreach (Rider rider in riders)
                     {
@@ -128,7 +123,6 @@ namespace Keiser.M3i.ReceiverDebug
                     }
                     break;
                 case 10:
-                    toBox(ipEndPointString, true);
                     toBox(" ID  RPM  HR  PWR INT CLOCK SSI UUID              TSU", true);
                     foreach (Rider rider in riders)
                     {
