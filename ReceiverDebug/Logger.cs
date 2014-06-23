@@ -27,7 +27,7 @@ namespace Keiser.M3i.ReceiverDebug
         private ListBox _outputBox;
         private Dispatcher dispatcher = Dispatcher.CurrentDispatcher;
         public List<Rider> riders;
-        public int apiVersion;
+        public string apiVersion;
 
         public Logger(ListBox realBox)
         {
@@ -47,7 +47,7 @@ namespace Keiser.M3i.ReceiverDebug
 
         }
 
-        public void start(List<Rider> _riders, int _apiVersion)
+        public void start(List<Rider> _riders, string _apiVersion)
         {
             riders = _riders;
             apiVersion = _apiVersion;
@@ -115,15 +115,15 @@ namespace Keiser.M3i.ReceiverDebug
             clearBox();
             switch (apiVersion)
             {
-                case 8:
+                case "0.8":
                     toBox("RPM  HR  PWR KCAL CLOCK SSI UUID              TSU", true);
                     foreach (Rider rider in riders)
                     {
                         toBox(rider.getString_v08());
                     }
                     break;
-                case 10:
-                    toBox(" ID  RPM  HR  PWR INT CLOCK SSI UUID              TSU", true);
+                case "1.0+":
+                    toBox(" ID  RPM  HR  PWR  INT  CLOCK  KCAL  TRP  SSI  V  UUID              TSU", true);
                     foreach (Rider rider in riders)
                     {
                         toBox(rider.getString_v10());

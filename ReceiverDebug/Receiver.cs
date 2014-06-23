@@ -31,7 +31,7 @@ namespace Keiser.M3i.ReceiverDebug
         {
             riders.Clear();
             _Thread = new Thread(worker);
-            logger.start(riders, apiVersionInt);
+            logger.start(riders, apiVersionStr);
             _KeepWorking = running = true;
             _Thread.Start();
         }
@@ -212,11 +212,10 @@ namespace Keiser.M3i.ReceiverDebug
 
         private void parser_v10p(byte[] receivedData)
         {
-            byte apiVersion = receivedData[0];
-            switch (apiVersion)
+            apiVersionInt = receivedData[0];
+            switch (apiVersionInt)
             {
                 case 10:
-                    apiVersionInt = 10;
                     parser_v10(receivedData);
                     break;
             }
@@ -231,6 +230,8 @@ namespace Keiser.M3i.ReceiverDebug
             {
                 int offset = 2 + (x * dataSize);
                 UInt16 id = receivedData[offset];
+                if (id == 0)
+                    continue;
                 if (!riders.Exists(y => y.idEquals(id)))
                 {
                     riders.Add(new Rider(id));
