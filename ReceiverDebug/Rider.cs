@@ -28,7 +28,7 @@ namespace Keiser.M3i.ReceiverDebug
         public UInt16? id;
         public UInt16? interval;
         public UInt16? trip;
-        public bool imperialUnits;
+        //public bool imperialUnits;
 
 
         public Rider(byte[] idArray)
@@ -135,7 +135,7 @@ namespace Keiser.M3i.ReceiverDebug
 
         public string getString_v10()
         {
-            return string.Format("{0,3:} {1,3:} {2,3:} {3,4:} {4,4:} {5,4:} {6,3} {7,17} {8,3}", id, rpm, hr, power, interval, clock, rssi, getUuidString(), timeSinceUpdate());
+            return string.Format("{0,3:} {1,3:} {2,3:} {3,4:} {4,3:} {5,5:} {6,3} {7,17} {8,3}", id, rpm, hr, power, interval, clock, rssi, getUuidString(), timeSinceUpdate());
         }
     }
 }

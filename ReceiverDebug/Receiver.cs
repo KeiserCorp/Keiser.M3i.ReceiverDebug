@@ -205,6 +205,7 @@ namespace Keiser.M3i.ReceiverDebug
                 if (!riders.Exists(y => y.uuidEquals(uuid)))
                 {
                     riders.Add(new Rider(uuid));
+                    Debug.WriteLine("Adding new v08 Rider");
                 }
                 Rider rider = riders.Find(y => y.uuidEquals(uuid));
                 updateRide_v08(configSettings, receivedData, offset, rider);
@@ -236,6 +237,7 @@ namespace Keiser.M3i.ReceiverDebug
                 if (!riders.Exists(y => y.idEquals(id)))
                 {
                     riders.Add(new Rider(id));
+                    Debug.WriteLine("Adding new v10 Rider");
                 }
                 Rider rider = riders.Find(y => y.idEquals(id));
                 updateRide_v10(configSettings, receivedData, offset, rider);
@@ -245,6 +247,7 @@ namespace Keiser.M3i.ReceiverDebug
 
         private void updateRide_v08(configSettings_v08 configSettings, byte[] receivedData, int offset, Rider rider)
         {
+            Debug.WriteLine("Updating v08 Rider");
             UInt16 rpm = Convert.ToUInt16((configSettings.rpmLong) ? twoByteConcat(receivedData[offset + configSettings.rpmOffset()], receivedData[offset + configSettings.rpmOffset() + 1]) / 10 : receivedData[offset + configSettings.rpmOffset()]);
             UInt16 hr = Convert.ToUInt16((configSettings.hrLong) ? twoByteConcat(receivedData[offset + configSettings.hrOffset()], receivedData[offset + configSettings.hrOffset() + 1]) / 10 : receivedData[offset + configSettings.hrOffset()]);
             UInt16 power = twoByteConcat(receivedData[offset + configSettings.powerOffset()], receivedData[offset + configSettings.powerOffset() + 1]);
@@ -268,6 +271,7 @@ namespace Keiser.M3i.ReceiverDebug
 
         private void updateRide_v10(configSettings_v10 configSettings, byte[] receivedData, int offset, Rider rider)
         {
+            Debug.WriteLine("Updating v10 Rider");
             byte[] uuid = (configSettings.uuidSend) ? getUUID(receivedData, configSettings.uuidOffset()) : new byte[6];
             UInt16 major =  Convert.ToUInt16((configSettings.versionSend) ? receivedData[offset + configSettings.majorOffset()] : 0);
             UInt16 minor = Convert.ToUInt16((configSettings.versionSend) ? receivedData[offset + configSettings.minorOffset()] : 0);
@@ -278,6 +282,7 @@ namespace Keiser.M3i.ReceiverDebug
             UInt16 kcal = Convert.ToUInt16((configSettings.intervalSend) ? twoByteConcat(receivedData[offset + configSettings.kcalOffset()], receivedData[offset + configSettings.kcalOffset() + 1]) : 0);
             UInt16 clock = Convert.ToUInt16((configSettings.intervalSend) ? twoByteConcat(receivedData[offset + configSettings.clockOffset()], receivedData[offset + configSettings.clockOffset() + 1]) : 0);
             UInt16 trip = Convert.ToUInt16((configSettings.intervalSend) ? twoByteConcat(receivedData[offset + configSettings.tripOffset()], receivedData[offset + configSettings.tripOffset() + 1]) : 0);
+            trip = (UInt16)(trip & (UInt16)32767);
             Int16 rssi = Convert.ToInt16((configSettings.rssiSend) ? receivedData[offset + configSettings.rssiOffset()] : 0);
             rider.update_v10(uuid, major, minor, rpm, hr, power, interval, kcal, clock, trip, rssi);
         }

@@ -129,7 +129,7 @@ namespace Keiser.M3i.ReceiverDebug
                     break;
                 case 10:
                     toBox(ipEndPointString, true);
-                    toBox("ID  RPM  HR  PWR INT CLOCK SSI UUID              TSU", true);
+                    toBox(" ID  RPM  HR  PWR INT CLOCK SSI UUID              TSU", true);
                     foreach (Rider rider in riders)
                     {
                         toBox(rider.getString_v10());
