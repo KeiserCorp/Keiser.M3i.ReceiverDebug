@@ -228,7 +228,7 @@
             this.MinimumSize = new System.Drawing.Size(550, 335);
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "M3 Relay Debug";
+            this.Text = "M3i Receiver Debugger";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.bottomStatusStrip.ResumeLayout(false);
             this.bottomStatusStrip.PerformLayout();

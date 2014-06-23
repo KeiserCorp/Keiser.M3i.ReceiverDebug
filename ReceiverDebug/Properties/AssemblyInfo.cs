@@ -6,11 +6,11 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("M3RelayDebug")]
+[assembly: AssemblyTitle("M3i Receiver Debugger")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Keiser Corp")]
-[assembly: AssemblyProduct("M3RelayDebug")]
+[assembly: AssemblyProduct("Keiser.M3i.ReceiverDebug")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
