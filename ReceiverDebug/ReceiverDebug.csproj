@@ -8,11 +8,11 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Keiser.M3i.ReceiverDebug</RootNamespace>
-    <AssemblyName>M3i Receiver Debug</AssemblyName>
+    <AssemblyName>M3i Mutli-Bike Receiver Debugger</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>D:\Development\APX4\Publish\debug\</PublishUrl>
+    <PublishUrl>D:\Development\Keiser.M3i.ReceiverDebug\DeployBuilds\01.01.00.00\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -22,11 +22,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://manuals.keiser.com/downloads/m3relay/debug/</InstallUrl>
-    <ProductName>M3i Receiver Debugger</ProductName>
+    <InstallUrl>http://dev.keiser.com/files/receiver_debug/</InstallUrl>
+    <ProductName>M3i Mutli-Bike Receiver Debugger</ProductName>
     <PublisherName>Keiser Corp</PublisherName>
     <SuiteName>M3i Developer Tools</SuiteName>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <ApplicationRevision>0</ApplicationRevision>
@@ -72,7 +71,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
