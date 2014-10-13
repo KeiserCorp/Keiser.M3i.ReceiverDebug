@@ -28,13 +28,14 @@ namespace Keiser.M3i.ReceiverDebug
         public UInt16? id;
         public UInt16? interval;
         public UInt16? trip;
-        //public bool imperialUnits;
+        // API Versions: 1.1
+        public UInt16? gear;
 
 
         public Rider(byte[] idArray)
         {
             uuid = idArray;
-            rpm = hr = power = kcal = clock = null;
+            rpm = hr = power = kcal = clock = gear = null;
             rssi = null;
             updates = 0;
             timeFromStart = Stopwatch.StartNew();
@@ -44,7 +45,7 @@ namespace Keiser.M3i.ReceiverDebug
         public Rider(UInt16 id)
         {
             this.id = id;
-            rpm = hr = power = kcal = clock = null;
+            rpm = hr = power = kcal = clock = gear = null;
             rssi = null;
             updates = 0;
             timeFromStart = Stopwatch.StartNew();
@@ -90,7 +91,7 @@ namespace Keiser.M3i.ReceiverDebug
             timeFromUpdate.Start();
         }
 
-        public void update_v10(byte[] _uuid, UInt16 _major, UInt16 _minor, UInt16 _rpm, UInt16 _hr, UInt16 _power, UInt16 _interval, UInt16 _kcal, UInt16 _clock, UInt16 _trip, Int16 _rssi)
+        public void update_v10(byte[] _uuid, UInt16 _major, UInt16 _minor, UInt16 _rpm, UInt16 _hr, UInt16 _power, UInt16 _interval, UInt16 _kcal, UInt16 _clock, UInt16 _trip, Int16 _rssi, UInt16 _gear)
         {
             uuid = _uuid;
             major = _major;
@@ -103,6 +104,7 @@ namespace Keiser.M3i.ReceiverDebug
             clock = _clock;
             trip = _trip;
             rssi = _rssi;
+            gear = _gear;
             updates++;
             elapsedAtLastUpdate = timeFromStart.Elapsed;
             timeFromUpdate.Reset();
@@ -135,7 +137,7 @@ namespace Keiser.M3i.ReceiverDebug
 
         public string getString_v10()
         {
-            return string.Format("{0,3:} {1,4:} {2,3:} {3,4:} {4,4:} {5,6:} {6,5:} {7,4:} {8,4} {9,2:} {10,18} {11,3}", id, rpm, hr, power, interval, clock, kcal, trip, rssi, major, getUuidString(), timeSinceUpdate());
+            return string.Format("{0,3:} {1,4:} {2,3:} {3,4:} {4,4:} {5,6:} {6,5:} {7,4:} {8,4} {9,2:} {10,2:} {11,18} {12,3}", id, rpm, hr, power, interval, clock, kcal, trip, rssi, major, gear, getUuidString(), timeSinceUpdate());
         }
     }
 }

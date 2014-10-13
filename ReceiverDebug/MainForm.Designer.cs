@@ -57,7 +57,7 @@
             this.statusBarSaveButton});
             this.bottomStatusStrip.Location = new System.Drawing.Point(0, 274);
             this.bottomStatusStrip.Name = "bottomStatusStrip";
-            this.bottomStatusStrip.Size = new System.Drawing.Size(534, 22);
+            this.bottomStatusStrip.Size = new System.Drawing.Size(554, 22);
             this.bottomStatusStrip.SizingGrip = false;
             this.bottomStatusStrip.TabIndex = 0;
             this.bottomStatusStrip.Text = "bottomStatusStrip";
@@ -122,7 +122,7 @@
             this.mainControlPanel.Controls.Add(this.ipAddressLabel);
             this.mainControlPanel.Location = new System.Drawing.Point(0, -1);
             this.mainControlPanel.Name = "mainControlPanel";
-            this.mainControlPanel.Size = new System.Drawing.Size(534, 34);
+            this.mainControlPanel.Size = new System.Drawing.Size(554, 34);
             this.mainControlPanel.TabIndex = 1;
             // 
             // versionLabel
@@ -148,7 +148,7 @@
             // 
             // threadToggleButton
             // 
-            this.threadToggleButton.Location = new System.Drawing.Point(456, 5);
+            this.threadToggleButton.Location = new System.Drawing.Point(476, 5);
             this.threadToggleButton.Name = "threadToggleButton";
             this.threadToggleButton.Size = new System.Drawing.Size(75, 23);
             this.threadToggleButton.TabIndex = 3;
@@ -207,10 +207,10 @@
             this.outputBox.ItemHeight = 11;
             this.outputBox.Location = new System.Drawing.Point(0, 32);
             this.outputBox.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.outputBox.MaximumSize = new System.Drawing.Size(534, 1000);
-            this.outputBox.MinimumSize = new System.Drawing.Size(534, 242);
+            this.outputBox.MaximumSize = new System.Drawing.Size(554, 1000);
+            this.outputBox.MinimumSize = new System.Drawing.Size(554, 242);
             this.outputBox.Name = "outputBox";
-            this.outputBox.Size = new System.Drawing.Size(534, 242);
+            this.outputBox.Size = new System.Drawing.Size(554, 242);
             this.outputBox.TabIndex = 0;
             // 
             // MainForm
@@ -218,14 +218,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(534, 296);
+            this.ClientSize = new System.Drawing.Size(554, 296);
             this.Controls.Add(this.outputBox);
             this.Controls.Add(this.mainControlPanel);
             this.Controls.Add(this.bottomStatusStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(550, 1000);
-            this.MinimumSize = new System.Drawing.Size(550, 335);
+            this.MaximumSize = new System.Drawing.Size(570, 1000);
+            this.MinimumSize = new System.Drawing.Size(570, 335);
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "M3i Receiver Debugger";

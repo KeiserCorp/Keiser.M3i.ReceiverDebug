@@ -126,6 +126,7 @@ namespace Keiser.M3i.ReceiverDebug
             public bool intervalSend;
             public bool versionSend;
             public bool uuidSend;
+            public bool gearSend;
 
             public int idOffset()
             {
@@ -184,7 +185,12 @@ namespace Keiser.M3i.ReceiverDebug
 
             public int rssiOffset()
             {
-                return tripOffset() + ((intervalSend) ? 1 : 0);
+                return tripOffset() + ((intervalSend) ? 2 : 0);
+            }
+
+            public int gearOffset()
+            {
+                return rssiOffset() + ((rssiSend) ? 1 : 0);
             }
         }
 
@@ -202,7 +208,6 @@ namespace Keiser.M3i.ReceiverDebug
                 if (!riders.Exists(y => y.uuidEquals(uuid)))
                 {
                     riders.Add(new Rider(uuid));
-                    Debug.WriteLine("Adding new v08 Rider");
                 }
                 Rider rider = riders.Find(y => y.uuidEquals(uuid));
                 updateRide_v08(configSettings, receivedData, offset, rider);
@@ -235,7 +240,6 @@ namespace Keiser.M3i.ReceiverDebug
                 if (!riders.Exists(y => y.idEquals(id)))
                 {
                     riders.Add(new Rider(id));
-                    Debug.WriteLine("Adding new v10 Rider");
                 }
                 Rider rider = riders.Find(y => y.idEquals(id));
                 updateRide_v10(configSettings, receivedData, offset, rider);
@@ -245,7 +249,6 @@ namespace Keiser.M3i.ReceiverDebug
 
         private void updateRide_v08(configSettings_v08 configSettings, byte[] receivedData, int offset, Rider rider)
         {
-            Debug.WriteLine("Updating v08 Rider");
             UInt16 rpm = Convert.ToUInt16((configSettings.rpmLong) ? twoByteConcat(receivedData[offset + configSettings.rpmOffset()], receivedData[offset + configSettings.rpmOffset() + 1]) / 10 : receivedData[offset + configSettings.rpmOffset()]);
             UInt16 hr = Convert.ToUInt16((configSettings.hrLong) ? twoByteConcat(receivedData[offset + configSettings.hrOffset()], receivedData[offset + configSettings.hrOffset() + 1]) / 10 : receivedData[offset + configSettings.hrOffset()]);
             UInt16 power = twoByteConcat(receivedData[offset + configSettings.powerOffset()], receivedData[offset + configSettings.powerOffset() + 1]);
@@ -269,7 +272,6 @@ namespace Keiser.M3i.ReceiverDebug
 
         private void updateRide_v10(configSettings_v10 configSettings, byte[] receivedData, int offset, Rider rider)
         {
-            Debug.WriteLine("Updating v10 Rider");
             byte[] uuid = (configSettings.uuidSend) ? getUUID(receivedData, configSettings.uuidOffset()) : new byte[6];
             UInt16 major =  Convert.ToUInt16((configSettings.versionSend) ? receivedData[offset + configSettings.majorOffset()] : 0);
             UInt16 minor = Convert.ToUInt16((configSettings.versionSend) ? receivedData[offset + configSettings.minorOffset()] : 0);
@@ -282,7 +284,10 @@ namespace Keiser.M3i.ReceiverDebug
             UInt16 trip = Convert.ToUInt16((configSettings.intervalSend) ? twoByteConcat(receivedData[offset + configSettings.tripOffset()], receivedData[offset + configSettings.tripOffset() + 1]) : 0);
             trip = (UInt16)(trip & (UInt16)32767);
             Int16 rssi = Convert.ToInt16((configSettings.rssiSend) ? receivedData[offset + configSettings.rssiOffset()] : 0);
-            rider.update_v10(uuid, major, minor, rpm, hr, power, interval, kcal, clock, trip, rssi);
+            UInt16 gear = 0;
+            if (major == 6 && minor >= 33)
+                gear = Convert.ToUInt16((configSettings.gearSend) ? receivedData[offset + configSettings.gearOffset()] : 0);
+            rider.update_v10(uuid, major, minor, rpm, hr, power, interval, kcal, clock, trip, rssi, gear);
         }
 
         private UInt16 twoByteConcat(byte lower, byte higher)
@@ -332,6 +337,7 @@ namespace Keiser.M3i.ReceiverDebug
             size += (configSettings.versionSend) ? 2 : 0;
             size += (configSettings.intervalSend) ? 7 : 0;
             size += (configSettings.rssiSend) ? 1 : 0;
+            size += (configSettings.gearSend) ? 1 : 0;
             return size;
         }
 
@@ -356,6 +362,7 @@ namespace Keiser.M3i.ReceiverDebug
                 versionSend = (configFlags & 2) != 0,
                 intervalSend = (configFlags & 4) != 0,
                 rssiSend = (configFlags & 8) != 0,
+                gearSend = (configFlags & 16) != 0,
                 imperialUnits = (configFlags & 128) != 0
             };
         }

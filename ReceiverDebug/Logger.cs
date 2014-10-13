@@ -123,7 +123,7 @@ namespace Keiser.M3i.ReceiverDebug
                     }
                     break;
                 case "1.0+":
-                    toBox(" ID  RPM  HR  PWR  INT  CLOCK  KCAL  TRP  SSI  V  UUID              TSU", true);
+                    toBox(" ID  RPM  HR  PWR  INT  CLOCK  KCAL  TRP  SSI  V  GR  UUID              TSU", true);
                     foreach (Rider rider in riders)
                     {
                         toBox(rider.getString_v10());
