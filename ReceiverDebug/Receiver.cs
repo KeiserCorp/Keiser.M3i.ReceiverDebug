@@ -220,6 +220,7 @@ namespace Keiser.M3i.ReceiverDebug
             apiVersionInt = receivedData[0];
             switch (apiVersionInt)
             {
+                case 11:
                 case 10:
                     parser_v10(receivedData);
                     break;
@@ -284,9 +285,7 @@ namespace Keiser.M3i.ReceiverDebug
             UInt16 trip = Convert.ToUInt16((configSettings.intervalSend) ? twoByteConcat(receivedData[offset + configSettings.tripOffset()], receivedData[offset + configSettings.tripOffset() + 1]) : 0);
             trip = (UInt16)(trip & (UInt16)32767);
             Int16 rssi = Convert.ToInt16((configSettings.rssiSend) ? receivedData[offset + configSettings.rssiOffset()] : 0);
-            UInt16 gear = 0;
-            if (major == 6 && minor >= 33)
-                gear = Convert.ToUInt16((configSettings.gearSend) ? receivedData[offset + configSettings.gearOffset()] : 0);
+            UInt16 gear = Convert.ToUInt16((configSettings.gearSend) ? receivedData[offset + configSettings.gearOffset()] : 0);
             rider.update_v10(uuid, major, minor, rpm, hr, power, interval, kcal, clock, trip, rssi, gear);
         }
 
