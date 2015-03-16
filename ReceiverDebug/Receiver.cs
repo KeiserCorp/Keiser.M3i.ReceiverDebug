@@ -273,7 +273,7 @@ namespace Keiser.M3i.ReceiverDebug
 
         private void updateRide_v10(configSettings_v10 configSettings, byte[] receivedData, int offset, Rider rider)
         {
-            byte[] uuid = (configSettings.uuidSend) ? getUUID(receivedData, configSettings.uuidOffset()) : new byte[6];
+            byte[] uuid = (configSettings.uuidSend) ? getUUID(receivedData, offset + configSettings.uuidOffset()) : new byte[6];
             UInt16 major =  Convert.ToUInt16((configSettings.versionSend) ? receivedData[offset + configSettings.majorOffset()] : 0);
             UInt16 minor = Convert.ToUInt16((configSettings.versionSend) ? receivedData[offset + configSettings.minorOffset()] : 0);
             UInt16 rpm = Convert.ToUInt16(receivedData[offset + configSettings.rpmOffset()]);
