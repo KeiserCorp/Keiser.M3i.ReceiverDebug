@@ -113,7 +113,7 @@ namespace Keiser.M3i.ReceiverDebug
 
         public string timeSinceUpdate()
         {
-            int elapsed = timeFromUpdate.Elapsed.Seconds;
+            int elapsed = (int)timeFromUpdate.Elapsed.TotalSeconds;
             return (elapsed > 3) ? elapsed.ToString() : "";
         }
 
