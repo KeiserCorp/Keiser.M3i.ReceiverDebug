@@ -1,5 +1,5 @@
 # Keiser.M3i.ReceiverDebug
-:no_entry: [DEPRECATED] This repository is not longer maintained.
+:no_entry: [DEPRECATED] This repository is no longer maintained.
 
 Debug application for Multi-Bike Receiver
 
